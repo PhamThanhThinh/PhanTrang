@@ -1,0 +1,19 @@
+asp.net mvc
+- core
+- .net framework
+
+
+
+(C# nâng cao/asp.net kiến thức nền tảng)
+DI (dependency injection)
+Asyn/await(bất đồng bộ)
+Linq
+...
+
+- Luồng xử lý Http: post get put
+- Học upload file
+- Cầu hình project: appsetting, program, lauch
+- Session, cookie
+- Gửi mail
+- Razor (View) và Blazor (Page)
+...

@@ -1,0 +1,13 @@
+Domain chứa các class đối tượng
+
+Models
+dùng nhiều
+HttpPost - add
+HttpDelete - xóa
+HttpPut - update
+HttpGet
+lấy id để xóa, sửa
+
+red point
+visual studio 2022
+

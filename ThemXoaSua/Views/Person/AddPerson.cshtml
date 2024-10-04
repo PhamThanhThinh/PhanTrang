@@ -1,0 +1,29 @@
+﻿@model ThemXoaSua.Models.Person;
+@{
+  Layout = "_User";
+}
+
+<div style="width: 50%">
+  <form asp-action="AddPerson" method="post">
+    <div class="mb-3">
+      <label asp-for="Name" class="form-label">Name</label>
+      <input asp-for="Name" type="text" class="form-control">
+      <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="mb-3">
+      <label asp-for="Email" class="form-label">Email address</label>
+      <input asp-for="Email" type="email" class="form-control">
+      <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+
+    @if (TempData["msg"] != null)
+    {
+      <div class="mb-3">
+        @TempData["msg"]
+      </div>
+    }
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/Person/DisplayPersons" class="btn btn-primary">Danh sách người dùng</a>
+  </form>
+</div>

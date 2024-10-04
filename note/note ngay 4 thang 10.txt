@@ -1,0 +1,3 @@
+Nếu áp dụng Angular vào project ASP.NET thì
+asp.net sẽ làm api
+angular sẽ làm giao diện frontend

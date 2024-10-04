@@ -1,0 +1,82 @@
+﻿@model ThemXoaSua.Models.EmployeeViewModel
+@{
+  Layout = "_User";
+}
+<div class="mt-2" style="width:50%">
+  <div class="row">
+    <h2>Danh sách nhân viên</h2>
+    <div class="col-md-4">
+      <a href="/Employee/AddEmployees" class="btn btn-primary">Add Person</a>
+    </div>
+    <form asp-action="DisplayEmployees">
+      <div class="row">
+        <div class="col-md-6">
+          <input name="keySearch" class="form-control" placeholder="Tìm kiếm theo tên" />
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        </div>
+      </div>
+    </form>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+            <a href="/Employee/DisplayEmployees?orderBy=@Model.NameSort">Name</a>
+          </th>
+          <th>
+            <a href="/Employee/DisplayEmployees?orderBy=@Model.EmailSort">Email</a>
+          </th>
+          <th>Action</th>
+        </tr>
+
+        @foreach (var item in Model.Employees)
+        {
+          <tr>
+            <td>
+              @item.Name
+            </td>
+            <td>@item.Email</td>
+            <td>
+              <a class="btn btn-success" href="/Employee/EditEmployee?id=@item.Id">Edit</a>
+              <a class="btn btn-danger" href="/Employee/DeleteEmployee?id=@item.Id">Delete</a>
+            </td>
+          </tr>
+        }
+      </thead>
+    </table>
+  </div>
+  <nav>
+    <ul class="pagination">
+      @if (Model.CurrentPage > 1)
+      {
+        <li class="page-item">
+          <a class="page-link" href="/Employee/DisplayEmployees?keySearch=@Model.KeySearch&orderBy=@Model.OrderBy&currentPage=@(Model.CurrentPage - 1)"
+          aria-label="Trang trước">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+          
+        </li>
+      }
+      @for (int i = 1; i <= Model.TotalPages; i++)
+      {
+        if (i == Model.CurrentPage)
+        {
+          <li class="page-item"><a class="page-link active" href="/Employee/DisplayEmployees?keySearch=@Model.KeySearch&orderBy=@Model.OrderBy&currentPage=@i"> @i</a></li>
+        }
+        else
+        {
+          <li class="page-item"><a class="page-link" href="/Employee/DisplayEmployees?keySearch=@Model.KeySearch&orderBy=@Model.OrderBy&currentPage=@i"> @i</a></li>
+        }
+      }
+      @if (Model.CurrentPage < Model.TotalPages)
+      {
+        <li class="page-item">
+          <a class="page-link" href="/Employee/DisplayEmployees?keySearch=@Model.KeySearch&orderBy=@Model.OrderBy&currentPage=@(Model.CurrentPage + 1)" aria-label="Trang sau">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+</div>
